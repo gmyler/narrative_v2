@@ -1,0 +1,82 @@
+publication_week,stance_bucket,mentions,weighted_mentions,estimated_reach
+2011-09-05/2011-09-11,Mixed / procedural / unclear,1,0.766,105454
+2024-02-05/2024-02-11,Move away / stronger alignment,1,0.816,54859
+2024-07-29/2024-08-04,Mixed / procedural / unclear,1,0.742,54332
+2024-08-05/2024-08-11,Mixed / procedural / unclear,1,0.939,409767
+2024-08-19/2024-08-25,Mixed / procedural / unclear,1,0.744,57886
+2025-02-10/2025-02-16,Preserve / strengthen neutrality,1,0.976,409767
+2025-02-17/2025-02-23,Mixed / procedural / unclear,1,0.94,422995
+2025-03-31/2025-04-06,Preserve / strengthen neutrality,1,0.747,63038
+2025-04-21/2025-04-27,Move away / stronger alignment,1,0.743,56491
+2025-06-23/2025-06-29,Mixed / procedural / unclear,1,0.627,14950
+2025-09-22/2025-09-28,Mixed / procedural / unclear,1,0.741,54139
+2025-10-27/2025-11-02,Mixed / procedural / unclear,1,0.743,56491
+2025-11-10/2025-11-16,Mixed / procedural / unclear,1,0.235,0
+2025-12-08/2025-12-14,Mixed / procedural / unclear,1,0.939,416371
+2025-12-15/2025-12-21,Mixed / procedural / unclear,1,0.819,59435
+2025-12-22/2025-12-28,Mixed / procedural / unclear,2,1.848,434145
+2025-12-29/2026-01-04,Mixed / procedural / unclear,2,1.916,833668
+2026-01-12/2026-01-18,Mixed / procedural / unclear,6,3.252,909767
+2026-01-12/2026-01-18,Move away / stronger alignment,2,1.899,213591
+2026-01-12/2026-01-18,Preserve / strengthen neutrality,3,2.286,188828
+2026-01-19/2026-01-25,Mixed / procedural / unclear,10,8.634,2282308
+2026-01-19/2026-01-25,Move away / stronger alignment,18,13.572,1077870
+2026-01-19/2026-01-25,Preserve / strengthen neutrality,5,4.596,945911
+2026-01-19/2026-01-25,Reform / redefine neutrality,1,0.902,152134
+2026-01-26/2026-02-01,Lean preserve neutrality,1,0.688,80000
+2026-01-26/2026-02-01,Mixed / procedural / unclear,19,15.068,3090960
+2026-01-26/2026-02-01,Move away / stronger alignment,1,0.258,0
+2026-01-26/2026-02-01,Preserve / strengthen neutrality,50,37.86,5373963
+2026-02-02/2026-02-08,Mixed / procedural / unclear,15,12.776,2687573
+2026-02-02/2026-02-08,Move away / stronger alignment,1,0.818,57886
+2026-02-02/2026-02-08,Preserve / strengthen neutrality,7,5.576,1005929
+2026-02-02/2026-02-08,Reform / redefine neutrality,2,1.559,376422
+2026-02-09/2026-02-15,Lean preserve neutrality,1,0.741,53345
+2026-02-09/2026-02-15,Mixed / procedural / unclear,63,48.51,7903544
+2026-02-09/2026-02-15,Move away / stronger alignment,2,1.742,226457
+2026-02-09/2026-02-15,Preserve / strengthen neutrality,2,0.994,83000
+2026-02-16/2026-02-22,Lean preserve neutrality,1,0.739,314000
+2026-02-16/2026-02-22,Mixed / procedural / unclear,22,17.995,2853849
+2026-02-16/2026-02-22,Move away / stronger alignment,1,0.955,61457
+2026-02-16/2026-02-22,Preserve / strengthen neutrality,4,3.099,244200
+2026-02-16/2026-02-22,Reform / redefine neutrality,3,2.422,525546
+2026-02-23/2026-03-01,Mixed / procedural / unclear,27,22.035,5033217
+2026-02-23/2026-03-01,Move away / stronger alignment,1,0.759,83000
+2026-02-23/2026-03-01,Preserve / strengthen neutrality,12,9.53,2397903
+2026-02-23/2026-03-01,Reform / redefine neutrality,2,2.012,859767
+2026-03-02/2026-03-08,Mixed / procedural / unclear,26,20.443,3895446
+2026-03-02/2026-03-08,Move away / stronger alignment,2,1.655,318000
+2026-03-02/2026-03-08,Preserve / strengthen neutrality,15,11.878,1917705
+2026-03-02/2026-03-08,Reform / redefine neutrality,2,1.323,416834
+2026-03-09/2026-03-15,Mixed / procedural / unclear,26,20.645,3187960
+2026-03-09/2026-03-15,Move away / stronger alignment,34,24.554,2214203
+2026-03-09/2026-03-15,Preserve / strengthen neutrality,18,15.616,3265947
+2026-03-09/2026-03-15,Reform / redefine neutrality,1,0.741,53712
+2026-03-16/2026-03-22,Mixed / procedural / unclear,49,39.291,8302886
+2026-03-16/2026-03-22,Move away / stronger alignment,1,0.818,57886
+2026-03-16/2026-03-22,Preserve / strengthen neutrality,8,7.2,2419926
+2026-03-23/2026-03-29,Lean preserve neutrality,1,0.939,416834
+2026-03-23/2026-03-29,Mixed / procedural / unclear,9,7.85,2417326
+2026-03-23/2026-03-29,Move away / stronger alignment,2,1.731,123879
+2026-03-23/2026-03-29,Preserve / strengthen neutrality,9,8.079,2107092
+2026-03-23/2026-03-29,Reform / redefine neutrality,1,0.977,416834
+2026-03-30/2026-04-05,Mixed / procedural / unclear,15,11.406,2673335
+2026-03-30/2026-04-05,Move away / stronger alignment,1,0.811,129000
+2026-03-30/2026-04-05,Preserve / strengthen neutrality,10,8.668,1733601
+2026-03-30/2026-04-05,Reform / redefine neutrality,1,1.033,416834
+2026-04-06/2026-04-12,Lean preserve neutrality,1,1.032,409767
+2026-04-06/2026-04-12,Mixed / procedural / unclear,17,13.035,1190743
+2026-04-06/2026-04-12,Move away / stronger alignment,3,3.098,1239161
+2026-04-06/2026-04-12,Preserve / strengthen neutrality,45,34.832,4857066
+2026-04-06/2026-04-12,Reform / redefine neutrality,2,1.482,107424
+2026-04-13/2026-04-19,Mixed / procedural / unclear,15,12.965,2844860
+2026-04-13/2026-04-19,Preserve / strengthen neutrality,95,72.407,11680526
+2026-04-20/2026-04-26,Lean preserve neutrality,1,0.955,61457
+2026-04-20/2026-04-26,Mixed / procedural / unclear,8,7.331,2448935
+2026-04-20/2026-04-26,Preserve / strengthen neutrality,1,1.032,409767
+2026-04-27/2026-05-03,Mixed / procedural / unclear,9,7.666,2033301
+2026-04-27/2026-05-03,Preserve / strengthen neutrality,2,1.718,464864
+2026-04-27/2026-05-03,Reform / redefine neutrality,2,1.61,115169
+2026-05-04/2026-05-10,Mixed / procedural / unclear,3,2.827,729737
+2026-05-04/2026-05-10,Move away / stronger alignment,1,1.074,416834
+2026-05-04/2026-05-10,Preserve / strengthen neutrality,4,3.277,538827

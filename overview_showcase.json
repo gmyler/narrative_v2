@@ -1,0 +1,20 @@
+{
+  "raw_modelled_articles": 741,
+  "showcase_cluster_count": 11,
+  "showcase_actor_count": 39,
+  "showcase_outlet_count": 142,
+  "top_narrative_cluster": "Ukraine war and moral neutrality",
+  "top_actor": "Government",
+  "top_media_outlet": "The Irish Times",
+  "date_warning": "Publication dates are now available for the full modelled dataset. Full intervention-impact scoring still requires a structured intervention/event log.",
+  "data_warning": "Actor extraction is model-derived from article text because the supplied dataset has no dedicated actor/entity/quote column.",
+  "showcase_note": "This showcase file filters out low-confidence named-entity artefacts and keeps client-facing agenda shapers only.",
+  "has_publication_datetime": true,
+  "publication_datetime_column_used": "Published",
+  "publication_datetime_match_rate_pct": 100.0,
+  "min_publication_datetime": "2011-09-11 00:00:00",
+  "max_publication_datetime": "2026-05-06 00:00:00",
+  "weeks_available": 34,
+  "time_upgrade_note": "Publication time has been merged into article_scores_final.csv and separate time-series CSVs have been generated.",
+  "days_available": 124
+}

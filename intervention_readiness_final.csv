@@ -1,0 +1,2 @@
+has_publication_datetime,date_column_used,matched_articles,total_articles,match_rate_pct,min_publication_datetime,max_publication_datetime,weeks_available,days_available,ready_for_trend_analysis,ready_for_intervention_impact
+True,Published,741,741,100.0,2011-09-11 00:00:00,2026-05-06 00:00:00,34,124,True,"Needs intervention/event log with intervention_date, actor, message, and type"
