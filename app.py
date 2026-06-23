@@ -486,63 +486,108 @@ elif page == "Narrative Timeline":
 
 elif page == "Contributor Attribution":
     st.header("Contributor Attribution")
-    st.write("Separates publication-owned opinion from reported actor opinion, and shows how real or synthetic contributors carry the debate.")
+    st.write("Shows who owns the opinion: the publication/contributor, a single reported actor, or a multi-actor debate structure.")
 
     if opinion_articles.empty and contributor_attribution.empty and opinion_outlet_balance.empty:
         st.warning("No contributor attribution files found. Upload the V2 opinion attribution CSV/JSON files into the repo root or data/ folder.")
     else:
-        total_attr = int(opinion_overview.get("total_articles", len(opinion_articles))) if opinion_overview else len(opinion_articles)
+        def label_stance_side(value):
+            value = str(value).strip()
+            mapping = {
+                "preserve_neutrality": "Preserve / strengthen neutrality",
+                "reform_redefine": "Reform / redefine neutrality",
+                "reform_or_move_away": "Reform / move away",
+                "move_away_or_align": "Move away / stronger alignment",
+                "mixed_or_unclear": "Mixed / unclear",
+                "": "Mixed / unclear",
+                "nan": "Mixed / unclear",
+            }
+            return mapping.get(value, value.replace("_", " ").title())
 
-        if opinion_overview:
-            publication_owned_pct = float(opinion_overview.get("publication_owned_opinion_pct", 0))
-            actor_mediated_pct = float(opinion_overview.get("actor_mediated_pct", 0))
-            contested_pct = float(opinion_overview.get("contested_or_multi_actor_pct", 0))
-            unclear_pct = float(opinion_overview.get("unclear_attribution_pct", 0))
+        def add_contributor_label(df):
+            out = df.copy()
+            if out.empty:
+                return out
+            if "Outlet" not in out.columns:
+                out["Outlet"] = "Unknown outlet"
+            if "contributor_display_name" not in out.columns:
+                out["contributor_display_name"] = "Unknown contributor"
+            out["Outlet"] = out["Outlet"].fillna("Unknown outlet").astype(str)
+            out["contributor_display_name"] = out["contributor_display_name"].fillna("Unknown contributor").astype(str)
+            out["contributor_label"] = out["Outlet"] + " — " + out["contributor_display_name"]
+            return out
+
+        attr_articles = add_contributor_label(opinion_articles)
+        contrib = add_contributor_label(contributor_attribution)
+        outlet_balance = opinion_outlet_balance.copy()
+
+        if not attr_articles.empty and "stance_owner_side" in attr_articles.columns:
+            attr_articles["stance_label_clean"] = attr_articles["stance_owner_side"].apply(label_stance_side)
+        if not contrib.empty and "dominant_stance_side" in contrib.columns:
+            contrib["dominant_stance_label"] = contrib["dominant_stance_side"].apply(label_stance_side)
+
+        total_attr = len(attr_articles) if not attr_articles.empty else int(opinion_overview.get("total_articles", 0))
+
+        if not attr_articles.empty and "opinion_attribution_v2" in attr_articles.columns:
+            publication_owned_pct = attr_articles["opinion_attribution_v2"].eq("publication_owned_opinion").mean() * 100
+            actor_mediated_pct = attr_articles["opinion_attribution_v2"].isin([
+                "single_actor_reported_opinion",
+                "multi_actor_reported_opinion",
+                "multi_actor_contested_reported_opinion",
+            ]).mean() * 100
+            contested_pct = attr_articles["opinion_attribution_v2"].isin([
+                "multi_actor_reported_opinion",
+                "multi_actor_contested_reported_opinion",
+            ]).mean() * 100
+            unclear_pct = attr_articles["opinion_attribution_v2"].eq("unclear_attribution").mean() * 100
         else:
-            publication_owned_pct = 0
-            actor_mediated_pct = 0
-            contested_pct = 0
-            unclear_pct = 0
-            if not opinion_articles.empty and "opinion_attribution_v2" in opinion_articles.columns:
-                total_attr = len(opinion_articles)
-                publication_owned_pct = opinion_articles["opinion_attribution_v2"].eq("publication_owned_opinion").mean() * 100
-                actor_mediated_pct = opinion_articles["opinion_attribution_v2"].isin([
-                    "single_actor_reported_opinion",
-                    "multi_actor_reported_opinion",
-                    "multi_actor_contested_reported_opinion",
-                ]).mean() * 100
-                contested_pct = opinion_articles["opinion_attribution_v2"].isin([
-                    "multi_actor_reported_opinion",
-                    "multi_actor_contested_reported_opinion",
-                ]).mean() * 100
-                unclear_pct = opinion_articles["opinion_attribution_v2"].eq("unclear_attribution").mean() * 100
+            publication_owned_pct = float(opinion_overview.get("publication_owned_opinion_pct", 0)) if opinion_overview else 0
+            actor_mediated_pct = float(opinion_overview.get("actor_mediated_pct", 0)) if opinion_overview else 0
+            contested_pct = float(opinion_overview.get("contested_or_multi_actor_pct", 0)) if opinion_overview else 0
+            unclear_pct = float(opinion_overview.get("unclear_attribution_pct", 0)) if opinion_overview else 0
+
+        preserve_pct = 0
+        reform_move_pct = 0
+        if not attr_articles.empty and "stance_owner_side" in attr_articles.columns:
+            preserve_pct = attr_articles["stance_owner_side"].eq("preserve_neutrality").mean() * 100
+            reform_move_pct = attr_articles["stance_owner_side"].isin([
+                "reform_redefine",
+                "reform_or_move_away",
+                "move_away_or_align",
+            ]).mean() * 100
 
         c1, c2, c3, c4, c5 = st.columns(5)
         with c1:
-            metric_card("Articles attributed", fmt_num(total_attr), "with opinion ownership classification")
+            metric_card("Articles attributed", fmt_num(total_attr), "article-level classification")
         with c2:
-            metric_card("Publication-owned", f"{publication_owned_pct:.1f}%", "article/contributor appears to own the stance")
+            metric_card("Publication-owned", f"{publication_owned_pct:.1f}%", "article appears to own the stance")
         with c3:
-            metric_card("Actor-mediated", f"{actor_mediated_pct:.1f}%", "stance belongs to reported actors")
+            metric_card("Actor-mediated", f"{actor_mediated_pct:.1f}%", "reported or amplified actor stance")
         with c4:
-            metric_card("Multi-actor", f"{contested_pct:.1f}%", "coverage carries more than one side or actor")
+            metric_card("Preserve-side", f"{preserve_pct:.1f}%", "stance owner side")
         with c5:
-            metric_card("Unclear", f"{unclear_pct:.1f}%", "not enough attribution evidence")
+            metric_card("Reform / move", f"{reform_move_pct:.1f}%", "stance owner side")
 
         st.markdown(
-            "<div class='ok-box'><b>Attribution layer active:</b> this separates the contributor/byline from the true owner of the opinion. Synthetic contributor names are demo placeholders where byline metadata is missing.</div>",
+            "<div class='ok-box'><b>Clean interpretation:</b> contributor/byline is separate from opinion owner. A synthetic contributor is just a demo publishing persona. Stance belongs either to the publication voice or to the reported actor(s).</div>",
             unsafe_allow_html=True,
         )
 
-        tab1, tab2, tab3, tab4 = st.tabs(["Attribution split", "Contributor profiles", "Outlet balance", "Article evidence"])
+        tabs = st.tabs([
+            "Opinion ownership",
+            "Stance on neutrality",
+            "Outlet stance balance",
+            "Contributor profiles",
+            "Article evidence",
+        ])
 
-        with tab1:
+        with tabs[0]:
             left, right = st.columns([1.1, 1])
             with left:
                 st.markdown("<div class='card'>", unsafe_allow_html=True)
                 st.subheader("Opinion ownership split")
-                if not opinion_articles.empty and "opinion_attribution_label" in opinion_articles.columns:
-                    attr_counts = opinion_articles["opinion_attribution_label"].fillna("Unclear attribution").value_counts().reset_index()
+                if not attr_articles.empty and "opinion_attribution_label" in attr_articles.columns:
+                    attr_counts = attr_articles["opinion_attribution_label"].fillna("Unclear attribution").value_counts().reset_index()
                     attr_counts.columns = ["Attribution", "Articles"]
                     fig = px.bar(
                         attr_counts,
@@ -561,22 +606,139 @@ elif page == "Contributor Attribution":
 
             with right:
                 st.markdown("<div class='card'>", unsafe_allow_html=True)
-                st.subheader("How to read this")
+                st.subheader("Why this matters")
                 st.write(
-                    "Publication-owned means the article appears to carry the stance itself. "
-                    "Actor-mediated means the article is reporting, quoting, contrasting or amplifying an external actor's stance. "
-                    "Multi-actor means the article carries more than one reported actor, side or claim."
+                    "This page prevents a reported quote from being misread as the outlet's own opinion. "
+                    "It separates publication-owned opinion from actor-mediated coverage, then shows the neutrality stance attached to the opinion owner."
                 )
                 st.write(
-                    "This prevents the app from wrongly treating a reported quote as the outlet's own opinion."
+                    "Use the stance tabs to see whether reported or publication-owned views are preserving neutrality, reforming neutrality, moving away from neutrality, or staying unclear/mixed."
                 )
                 st.markdown("</div>", unsafe_allow_html=True)
 
-        with tab2:
+        with tabs[1]:
+            st.markdown("<div class='card'>", unsafe_allow_html=True)
+            st.subheader("Stance on neutrality by opinion owner")
+            if not attr_articles.empty and "stance_label_clean" in attr_articles.columns:
+                stance_counts = attr_articles["stance_label_clean"].value_counts().reset_index()
+                stance_counts.columns = ["Stance", "Articles"]
+                fig = px.bar(
+                    stance_counts,
+                    x="Articles",
+                    y="Stance",
+                    orientation="h",
+                    template="plotly_white",
+                    labels={"Articles": "Articles", "Stance": ""},
+                )
+                fig.update_layout(height=420, yaxis=dict(autorange="reversed"), margin=dict(l=10, r=10, t=25, b=10))
+                st.plotly_chart(fig, use_container_width=True)
+
+                if "opinion_attribution_label" in attr_articles.columns:
+                    cross = attr_articles.groupby(["opinion_attribution_label", "stance_label_clean"]).size().reset_index(name="Articles")
+                    fig2 = px.bar(
+                        cross,
+                        x="Articles",
+                        y="opinion_attribution_label",
+                        color="stance_label_clean",
+                        orientation="h",
+                        template="plotly_white",
+                        labels={
+                            "Articles": "Articles",
+                            "opinion_attribution_label": "Attribution",
+                            "stance_label_clean": "Stance on neutrality",
+                        },
+                    )
+                    fig2.update_layout(height=560, yaxis=dict(autorange="reversed"), margin=dict(l=10, r=10, t=25, b=10))
+                    st.plotly_chart(fig2, use_container_width=True)
+
+                display_table(
+                    stance_counts,
+                    ["Stance", "Articles"],
+                )
+            else:
+                st.info("No stance-owner side column found in the attribution file.")
+            st.markdown("</div>", unsafe_allow_html=True)
+
+        with tabs[2]:
+            st.markdown("<div class='card'>", unsafe_allow_html=True)
+            st.subheader("Outlet stance balance")
+            view = outlet_balance.copy()
+            if not view.empty:
+                for c in [
+                    "total_articles", "publication_owned_pct", "actor_mediated_pct", "contested_or_multi_actor_pct",
+                    "preserve_side_pct", "reform_side_pct", "move_away_side_pct", "mixed_unclear_side_pct",
+                ]:
+                    if c in view.columns:
+                        view[c] = pd.to_numeric(view[c], errors="coerce").fillna(0)
+
+                min_articles = st.slider("Minimum outlet articles", 1, 30, 5, key="outlet_min_articles")
+                if "total_articles" in view.columns:
+                    view = view[view["total_articles"] >= min_articles]
+
+                sort_choice = st.radio(
+                    "Sort outlets by",
+                    ["Total articles", "Preserve-side %", "Reform / move %", "Publication-owned %", "Actor-mediated %"],
+                    horizontal=True,
+                )
+                sort_map = {
+                    "Total articles": "total_articles",
+                    "Preserve-side %": "preserve_side_pct",
+                    "Reform / move %": "reform_side_pct",
+                    "Publication-owned %": "publication_owned_pct",
+                    "Actor-mediated %": "actor_mediated_pct",
+                }
+                sort_col = sort_map.get(sort_choice, "total_articles")
+                if sort_col in view.columns:
+                    view = view.sort_values(sort_col, ascending=False)
+
+                stance_cols = [
+                    c for c in ["preserve_side_pct", "reform_side_pct", "move_away_side_pct", "mixed_unclear_side_pct"]
+                    if c in view.columns
+                ]
+                if stance_cols:
+                    plot = view.head(25)[["Outlet", "total_articles"] + stance_cols].copy()
+                    plot_long = plot.melt(
+                        id_vars=["Outlet", "total_articles"],
+                        value_vars=stance_cols,
+                        var_name="stance_metric",
+                        value_name="percent",
+                    )
+                    plot_long["Stance"] = plot_long["stance_metric"].map({
+                        "preserve_side_pct": "Preserve / strengthen",
+                        "reform_side_pct": "Reform / redefine",
+                        "move_away_side_pct": "Move away / align",
+                        "mixed_unclear_side_pct": "Mixed / unclear",
+                    })
+                    fig = px.bar(
+                        plot_long,
+                        x="percent",
+                        y="Outlet",
+                        color="Stance",
+                        orientation="h",
+                        template="plotly_white",
+                        hover_data=["total_articles"],
+                        labels={"percent": "Share of outlet coverage %", "Outlet": ""},
+                    )
+                    fig.update_layout(height=720, yaxis=dict(autorange="reversed"), margin=dict(l=10, r=10, t=25, b=10))
+                    st.plotly_chart(fig, use_container_width=True)
+
+                display_table(
+                    view,
+                    [
+                        "Outlet", "total_articles", "publication_owned_pct", "actor_mediated_pct",
+                        "preserve_side_pct", "reform_side_pct", "move_away_side_pct", "mixed_unclear_side_pct",
+                        "contested_or_multi_actor_pct", "viewpoint_spread_score", "one_sided_amplification_risk", "top_reported_actors", "top_frames",
+                    ],
+                    100,
+                )
+            else:
+                st.info("No outlet attribution balance found.")
+            st.markdown("</div>", unsafe_allow_html=True)
+
+        with tabs[3]:
             st.markdown("<div class='card'>", unsafe_allow_html=True)
             st.subheader("Contributor profiles")
-
-            view = contributor_attribution.copy()
+            view = contrib.copy()
             if not view.empty:
                 contributor_type_filter = "All"
                 if "contributor_type" in view.columns:
@@ -585,41 +747,38 @@ elif page == "Contributor Attribution":
                     if contributor_type_filter != "All":
                         view = view[view["contributor_type"].astype(str) == contributor_type_filter]
 
-                min_articles = st.slider("Minimum articles", 1, 30, 2)
+                min_articles = st.slider("Minimum contributor articles", 1, 30, 3, key="contrib_min_articles")
                 if "articles" in view.columns:
-                    view = view[pd.to_numeric(view["articles"], errors="coerce").fillna(0) >= min_articles]
+                    view["articles"] = pd.to_numeric(view["articles"], errors="coerce").fillna(0)
+                    view = view[view["articles"] >= min_articles]
 
-                plot = view.copy()
-                for c in ["actor_mediated_pct", "contested_or_multi_actor_pct", "publication_owned_pct", "articles"]:
-                    if c in plot.columns:
-                        plot[c] = pd.to_numeric(plot[c], errors="coerce").fillna(0)
-
-                if not plot.empty and {"actor_mediated_pct", "contested_or_multi_actor_pct", "articles"}.issubset(plot.columns):
-                    fig = px.scatter(
-                        plot.head(120),
-                        x="actor_mediated_pct",
-                        y="contested_or_multi_actor_pct",
-                        size="articles",
-                        color="contributor_type" if "contributor_type" in plot.columns else None,
-                        hover_name="contributor_display_name",
-                        hover_data=[c for c in ["Outlet", "articles", "publication_owned_pct", "dominant_attribution", "one_sided_amplification_risk", "top_reported_actors"] if c in plot.columns],
-                        template="plotly_white",
-                        labels={
-                            "actor_mediated_pct": "Actor-mediated coverage %",
-                            "contested_or_multi_actor_pct": "Multi-actor / contested coverage %",
-                            "articles": "Articles",
-                        },
-                        size_max=45,
-                    )
-                    fig.update_layout(height=560, margin=dict(l=10, r=10, t=25, b=10))
-                    st.plotly_chart(fig, use_container_width=True)
+                if not attr_articles.empty and "contributor_label" in attr_articles.columns and "stance_label_clean" in attr_articles.columns:
+                    stance_by_contrib = attr_articles.groupby(["contributor_label", "stance_label_clean"]).size().reset_index(name="Articles")
+                    top_contributors = view.sort_values("articles", ascending=False).head(25)["contributor_label"].tolist()
+                    stance_by_contrib = stance_by_contrib[stance_by_contrib["contributor_label"].isin(top_contributors)]
+                    if not stance_by_contrib.empty:
+                        fig = px.bar(
+                            stance_by_contrib,
+                            x="Articles",
+                            y="contributor_label",
+                            color="stance_label_clean",
+                            orientation="h",
+                            template="plotly_white",
+                            labels={
+                                "Articles": "Articles",
+                                "contributor_label": "Contributor",
+                                "stance_label_clean": "Stance on neutrality",
+                            },
+                        )
+                        fig.update_layout(height=720, yaxis=dict(autorange="reversed"), margin=dict(l=10, r=10, t=25, b=10))
+                        st.plotly_chart(fig, use_container_width=True)
 
                 display_table(
-                    view,
+                    view.sort_values("articles", ascending=False) if "articles" in view.columns else view,
                     [
-                        "contributor_display_name", "Outlet", "contributor_type", "synthetic_author_flag", "articles",
+                        "contributor_label", "Outlet", "contributor_type", "synthetic_author_flag", "articles",
                         "publication_owned_pct", "actor_mediated_pct", "contested_or_multi_actor_pct",
-                        "dominant_attribution", "dominant_stance_side", "viewpoint_spread_score",
+                        "dominant_attribution", "dominant_stance_label", "viewpoint_spread_score",
                         "one_sided_amplification_risk", "top_reported_actors", "top_frames", "top_clusters",
                     ],
                     100,
@@ -628,47 +787,10 @@ elif page == "Contributor Attribution":
                 st.info("No contributor summary found.")
             st.markdown("</div>", unsafe_allow_html=True)
 
-        with tab3:
-            st.markdown("<div class='card'>", unsafe_allow_html=True)
-            st.subheader("Outlet attribution balance")
-            view = opinion_outlet_balance.copy()
-            if not view.empty:
-                for c in ["actor_mediated_pct", "publication_owned_pct", "contested_or_multi_actor_pct", "total_articles"]:
-                    if c in view.columns:
-                        view[c] = pd.to_numeric(view[c], errors="coerce").fillna(0)
-                sort_col = "actor_mediated_pct" if "actor_mediated_pct" in view.columns else "total_articles"
-                view = view.sort_values(sort_col, ascending=False)
-
-                fig = px.bar(
-                    view.head(30),
-                    x=sort_col,
-                    y="Outlet",
-                    orientation="h",
-                    hover_data=[c for c in ["total_articles", "publication_owned_pct", "contested_or_multi_actor_pct", "one_sided_amplification_risk", "top_reported_actors"] if c in view.columns],
-                    template="plotly_white",
-                    labels={sort_col: sort_col.replace("_", " ").title(), "Outlet": ""},
-                )
-                fig.update_layout(height=720, yaxis=dict(autorange="reversed"), margin=dict(l=10, r=10, t=25, b=10))
-                st.plotly_chart(fig, use_container_width=True)
-
-                display_table(
-                    view,
-                    [
-                        "Outlet", "total_articles", "publication_owned_pct", "actor_mediated_pct",
-                        "contested_or_multi_actor_pct", "factual_low_opinion_pct", "unclear_pct",
-                        "preserve_side_pct", "reform_side_pct", "move_away_side_pct", "mixed_unclear_side_pct",
-                        "viewpoint_spread_score", "one_sided_amplification_risk", "top_reported_actors", "top_frames",
-                    ],
-                    100,
-                )
-            else:
-                st.info("No outlet attribution balance found.")
-            st.markdown("</div>", unsafe_allow_html=True)
-
-        with tab4:
+        with tabs[4]:
             st.markdown("<div class='card'>", unsafe_allow_html=True)
             st.subheader("Article-level attribution evidence")
-            view = opinion_articles.copy()
+            view = attr_articles.copy()
             if not view.empty:
                 if "opinion_attribution_label" in view.columns:
                     attr_options = ["All"] + sorted(view["opinion_attribution_label"].dropna().astype(str).unique().tolist())
@@ -676,17 +798,29 @@ elif page == "Contributor Attribution":
                     if attr_filter != "All":
                         view = view[view["opinion_attribution_label"].astype(str) == attr_filter]
 
-                if "contributor_display_name" in view.columns:
-                    contributor_options = ["All"] + sorted(view["contributor_display_name"].dropna().astype(str).unique().tolist())
+                if "stance_label_clean" in view.columns:
+                    stance_options = ["All"] + sorted(view["stance_label_clean"].dropna().astype(str).unique().tolist())
+                    stance_filter_local = st.selectbox("Stance on neutrality", stance_options)
+                    if stance_filter_local != "All":
+                        view = view[view["stance_label_clean"].astype(str) == stance_filter_local]
+
+                if "Outlet" in view.columns:
+                    outlet_options_local = ["All"] + sorted(view["Outlet"].dropna().astype(str).unique().tolist())
+                    outlet_filter_local = st.selectbox("Outlet", outlet_options_local, key="article_attr_outlet")
+                    if outlet_filter_local != "All":
+                        view = view[view["Outlet"].astype(str) == outlet_filter_local]
+
+                if "contributor_label" in view.columns:
+                    contributor_options = ["All"] + sorted(view["contributor_label"].dropna().astype(str).unique().tolist())
                     contributor_filter = st.selectbox("Contributor", contributor_options)
                     if contributor_filter != "All":
-                        view = view[view["contributor_display_name"].astype(str) == contributor_filter]
+                        view = view[view["contributor_label"].astype(str) == contributor_filter]
 
                 display_table(
                     view,
                     [
-                        "publication_datetime", "Headline", "Outlet", "Reporter", "contributor_display_name", "contributor_type",
-                        "opinion_attribution_label", "opinion_owner", "opinion_owner_type", "stance_owner_side",
+                        "publication_datetime", "Headline", "Outlet", "Reporter", "contributor_label", "contributor_type",
+                        "opinion_attribution_label", "opinion_owner", "opinion_owner_type", "stance_label_clean",
                         "attribution_confidence", "attribution_evidence", "dominant_frame", "cluster_display_name", "Link",
                     ],
                     150,
@@ -694,6 +828,7 @@ elif page == "Contributor Attribution":
             else:
                 st.info("No article-level attribution file found.")
             st.markdown("</div>", unsafe_allow_html=True)
+
 
 elif page == "Agenda Shapers":
     st.header("Agenda Shapers")
