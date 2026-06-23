@@ -1,0 +1,143 @@
+Outlet,total_articles,publication_owned_count,single_actor_reported_count,multi_actor_reported_count,multi_actor_contested_reported_count,factual_low_opinion_count,unclear_count,publication_owned_pct,actor_mediated_pct,contested_or_multi_actor_pct,factual_low_opinion_pct,unclear_pct,preserve_side_pct,reform_side_pct,move_away_side_pct,mixed_unclear_side_pct,viewpoint_spread_score,one_sided_amplification_risk,top_reported_actors,top_frames
+The Irish Times,37,2,8,6,19,1,1,5.41,89.19,67.57,2.7,2.7,32.43,10.81,2.7,54.05,0.747,low_one_sided_amplification_risk,"Lelia Doolan, Micheál Martin, Government, reported_actor_unclear","Ukraine / Russia / Moral Responsibility, Other Neutrality Debate, Shannon / US Military / Anti-war, Peacekeeping / Identity / Tradition, Defence Capability / Underinvestment"
+The Sligo Champion,28,0,18,0,0,0,10,0.0,64.29,0.0,0.0,35.71,0.0,0.0,0.0,100.0,0.0,high_one_sided_amplification_risk,reported_actor_unclear,"Ukraine / Russia / Moral Responsibility, Other Neutrality Debate"
+The Irish Independent,27,4,6,5,9,0,3,14.81,74.07,51.85,0.0,11.11,25.93,3.7,18.52,51.85,0.811,low_one_sided_amplification_risk,"Government, NATO","Ukraine / Russia / Moral Responsibility, Other Neutrality Debate, Peacekeeping / Identity / Tradition, Triple Lock / UN Mandate, Budget / Fiscal / Public Finances"
+The Irish Examiner,21,1,7,2,10,0,1,4.76,90.48,57.14,0.0,4.76,47.62,4.76,9.52,38.1,0.786,low_one_sided_amplification_risk,"Government, Lelia Doolan, Micheál Martin","Ukraine / Russia / Moral Responsibility, Other Neutrality Debate, Shannon / US Military / Anti-war, Peacekeeping / Identity / Tradition, Defence Capability / Underinvestment"
+The Pat Kenny Show,18,6,2,0,1,6,3,33.33,16.67,5.56,33.33,16.67,16.67,0.0,0.0,83.33,0.65,high_one_sided_amplification_risk,"Ukraine, Shannon Airport","Other Neutrality Debate, Shannon / US Military / Anti-war"
+KFM Radio,15,0,10,0,1,3,1,0.0,73.33,6.67,20.0,6.67,46.67,6.67,0.0,46.67,0.812,low_one_sided_amplification_risk,"Mary Lou McDonald, Government, reported_actor_unclear, Helen McEntee","Other Neutrality Debate, Ukraine / Russia / Moral Responsibility"
+Galway Bay FM,15,0,6,0,1,2,6,0.0,46.67,6.67,13.33,40.0,53.33,0.0,6.67,40.0,0.803,low_one_sided_amplification_risk,"Mary Lou McDonald, Government, Micheál Martin","Other Neutrality Debate, Peacekeeping / Identity / Tradition"
+Liveline,14,2,5,0,0,3,4,14.29,35.71,0.0,21.43,28.57,35.71,7.14,0.0,57.14,0.797,low_one_sided_amplification_risk,"Fianna Fáil, reported_actor_unclear, Ukraine, Russia","Other Neutrality Debate, Ukraine / Russia / Moral Responsibility"
+Galway Talks,13,1,6,0,1,2,3,7.69,53.85,7.69,15.38,23.08,38.46,0.0,0.0,61.54,0.961,low_one_sided_amplification_risk,"Government, Mary Lou McDonald, Gaza, NATO, Helen McEntee","Other Neutrality Debate, Shannon / US Military / Anti-war, Ukraine / Russia / Moral Responsibility, Peacekeeping / Identity / Tradition"
+Hard Shoulder,13,4,3,0,1,4,1,30.77,30.77,7.69,30.77,7.69,23.08,0.0,7.69,69.23,0.719,medium_one_sided_amplification_risk,"Mary Lou McDonald, Israel, reported_actor_unclear","Other Neutrality Debate, Ukraine / Russia / Moral Responsibility, Peacekeeping / Identity / Tradition"
+Classic Hits 4FM,12,2,6,0,1,2,1,16.67,58.33,8.33,16.67,8.33,58.33,0.0,0.0,41.67,0.98,low_one_sided_amplification_risk,"Government, Sinn Féin, Mary Lou McDonald, reported_actor_unclear, Micheál Martin","Other Neutrality Debate, Triple Lock / UN Mandate"
+Kerry Today,12,2,2,0,0,5,3,16.67,16.67,0.0,41.67,25.0,16.67,0.0,16.67,66.67,0.79,medium_one_sided_amplification_risk,Helen McEntee,Other Neutrality Debate
+RTE,11,0,2,1,8,0,0,0.0,100.0,81.82,0.0,0.0,36.36,0.0,0.0,63.64,0.946,low_one_sided_amplification_risk,"Lelia Doolan, EU","Ukraine / Russia / Moral Responsibility, Shannon / US Military / Anti-war, NATO / EU Security Alignment, Peacekeeping / Identity / Tradition, Other Neutrality Debate"
+Midlands Today,11,0,6,2,0,3,0,0.0,72.73,18.18,27.27,0.0,63.64,0.0,0.0,36.36,0.946,low_one_sided_amplification_risk,"Mary Lou McDonald, Sinn Féin, Micheál Martin, Helen McEntee, Government",Other Neutrality Debate
+The Western People,10,0,1,2,5,1,1,0.0,80.0,70.0,10.0,10.0,30.0,0.0,30.0,40.0,0.991,low_one_sided_amplification_risk,,"Ukraine / Russia / Moral Responsibility, Other Neutrality Debate, Triple Lock / UN Mandate, Defence Capability / Underinvestment"
+98FM,10,0,3,1,0,6,0,0.0,40.0,10.0,60.0,0.0,20.0,0.0,10.0,70.0,0.73,medium_one_sided_amplification_risk,"Mary Lou McDonald, reported_actor_unclear, Government",Other Neutrality Debate
+LMFM,10,1,3,1,0,1,4,10.0,40.0,10.0,10.0,40.0,10.0,0.0,0.0,90.0,0.469,high_one_sided_amplification_risk,"Government, Simon Harris",Other Neutrality Debate
+RTE - Radio 1,10,2,2,0,0,3,3,20.0,20.0,0.0,30.0,30.0,0.0,10.0,0.0,90.0,0.469,high_one_sided_amplification_risk,Government,"Other Neutrality Debate, NATO / EU Security Alignment"
+Leinster Express,9,0,3,2,4,0,0,0.0,100.0,66.67,0.0,0.0,66.67,0.0,22.22,11.11,0.773,medium_one_sided_amplification_risk,Lelia Doolan,"Shannon / US Military / Anti-war, Other Neutrality Debate, Defence Capability / Underinvestment, Peacekeeping / Identity / Tradition"
+Today With David McCullagh,9,6,2,0,0,0,1,66.67,22.22,0.0,0.0,11.11,11.11,0.0,0.0,88.89,0.503,high_one_sided_amplification_risk,"reported_actor_unclear, NATO",Other Neutrality Debate
+Waterford News & Star,8,0,0,2,6,0,0,0.0,100.0,100.0,0.0,0.0,37.5,0.0,12.5,50.0,0.887,low_one_sided_amplification_risk,,"Ukraine / Russia / Moral Responsibility, Other Neutrality Debate, Peacekeeping / Identity / Tradition, Defence Capability / Underinvestment, Triple Lock / UN Mandate"
+Kilkenny People,8,0,1,2,5,0,0,0.0,100.0,87.5,0.0,0.0,75.0,0.0,25.0,0.0,0.811,medium_one_sided_amplification_risk,Sinn Féin,"Other Neutrality Debate, Defence Capability / Underinvestment, Peacekeeping / Identity / Tradition, Shannon / US Military / Anti-war"
+The Kerryman,8,0,6,0,2,0,0,0.0,100.0,25.0,0.0,0.0,50.0,0.0,0.0,50.0,1.0,low_one_sided_amplification_risk,"Helen McEntee, People Before Profit","Shannon / US Military / Anti-war, Other Neutrality Debate, Ukraine / Russia / Moral Responsibility"
+C103,8,0,8,0,0,0,0,0.0,100.0,0.0,0.0,0.0,75.0,0.0,0.0,25.0,0.811,medium_one_sided_amplification_risk,"Mary Lou McDonald, Micheál Martin",Other Neutrality Debate
+The University Times,8,1,0,1,6,0,0,12.5,87.5,87.5,0.0,0.0,50.0,12.5,12.5,25.0,0.875,low_one_sided_amplification_risk,,"Other Neutrality Debate, Public Consent / Referendum, Defence Capability / Underinvestment, Ukraine / Russia / Moral Responsibility"
+Hot Press,8,0,3,2,2,0,1,0.0,87.5,50.0,0.0,12.5,100.0,0.0,0.0,0.0,0.0,high_one_sided_amplification_risk,"Sally Rooney, Micheál Martin","Shannon / US Military / Anti-war, Ukraine / Russia / Moral Responsibility"
+North West Today,8,1,3,1,0,2,1,12.5,50.0,12.5,25.0,12.5,37.5,0.0,0.0,62.5,0.954,low_one_sided_amplification_risk,"Mary Lou McDonald, Micheál Martin, Helen McEntee","Other Neutrality Debate, Peacekeeping / Identity / Tradition"
+Echo Live,7,0,1,2,4,0,0,0.0,100.0,85.71,0.0,0.0,42.86,0.0,28.57,28.57,0.982,low_one_sided_amplification_risk,reported_actor_unclear,"Ukraine / Russia / Moral Responsibility, Other Neutrality Debate, Defence Capability / Underinvestment, Triple Lock / UN Mandate"
+The Westmeath Examiner,7,0,0,1,5,0,1,0.0,85.71,85.71,0.0,14.29,14.29,0.0,28.57,57.14,0.87,low_one_sided_amplification_risk,,"Ukraine / Russia / Moral Responsibility, Other Neutrality Debate, Triple Lock / UN Mandate, Defence Capability / Underinvestment"
+The Belfast Telegraph,7,0,1,2,3,0,1,0.0,85.71,71.43,0.0,14.29,57.14,0.0,0.0,42.86,0.985,low_one_sided_amplification_risk,Government,"Other Neutrality Debate, Shannon / US Military / Anti-war, Budget / Fiscal / Public Finances, Ukraine / Russia / Moral Responsibility"
+The Meath Chronicle,7,0,1,1,4,0,1,0.0,85.71,71.43,0.0,14.29,14.29,0.0,28.57,57.14,0.87,low_one_sided_amplification_risk,reported_actor_unclear,"Ukraine / Russia / Moral Responsibility, Other Neutrality Debate, Triple Lock / UN Mandate, Defence Capability / Underinvestment"
+Midlands 103,7,1,2,0,0,4,0,14.29,28.57,0.0,57.14,0.0,14.29,0.0,0.0,85.71,0.592,high_one_sided_amplification_risk,"Mary Lou McDonald, People Before Profit",Other Neutrality Debate
+Leitrim Observer,6,0,0,2,4,0,0,0.0,100.0,100.0,0.0,0.0,66.67,0.0,33.33,0.0,0.918,medium_one_sided_amplification_risk,,"Other Neutrality Debate, Defence Capability / Underinvestment, Shannon / US Military / Anti-war, Peacekeeping / Identity / Tradition"
+Letterkenny Live,6,0,0,1,5,0,0,0.0,100.0,100.0,0.0,0.0,66.67,0.0,33.33,0.0,0.918,medium_one_sided_amplification_risk,,"Other Neutrality Debate, Defence Capability / Underinvestment, Shannon / US Military / Anti-war, Ukraine / Russia / Moral Responsibility"
+The Inish Times,6,0,0,1,5,0,0,0.0,100.0,100.0,0.0,0.0,66.67,0.0,33.33,0.0,0.918,medium_one_sided_amplification_risk,,"Other Neutrality Debate, Defence Capability / Underinvestment, Shannon / US Military / Anti-war, Ukraine / Russia / Moral Responsibility"
+Waterford Live,6,0,0,1,5,0,0,0.0,100.0,100.0,0.0,0.0,66.67,0.0,33.33,0.0,0.918,medium_one_sided_amplification_risk,,"Other Neutrality Debate, Defence Capability / Underinvestment, Shannon / US Military / Anti-war, Triple Lock / UN Mandate"
+Offaly Independent,6,0,1,1,4,0,0,0.0,100.0,83.33,0.0,0.0,33.33,0.0,16.67,50.0,0.921,low_one_sided_amplification_risk,Government,"Ukraine / Russia / Moral Responsibility, Other Neutrality Debate, Shannon / US Military / Anti-war, Triple Lock / UN Mandate, Defence Capability / Underinvestment"
+Today FM,6,0,4,0,2,0,0,0.0,100.0,33.33,0.0,0.0,50.0,0.0,0.0,50.0,1.0,low_one_sided_amplification_risk,"Mary Lou McDonald, Gaza",Other Neutrality Debate
+Connaught Telegraph,6,0,0,1,4,0,1,0.0,83.33,83.33,0.0,16.67,16.67,0.0,33.33,50.0,0.921,low_one_sided_amplification_risk,,"Ukraine / Russia / Moral Responsibility, Other Neutrality Debate, Triple Lock / UN Mandate, Defence Capability / Underinvestment"
+Roscommon Herald,6,0,0,2,3,0,1,0.0,83.33,83.33,0.0,16.67,33.33,0.0,16.67,50.0,0.921,low_one_sided_amplification_risk,,"Ukraine / Russia / Moral Responsibility, Other Neutrality Debate, Peacekeeping / Identity / Tradition, Defence Capability / Underinvestment, Budget / Fiscal / Public Finances"
+The Westmeath Independent,6,0,0,1,4,0,1,0.0,83.33,83.33,0.0,16.67,16.67,0.0,33.33,50.0,0.921,low_one_sided_amplification_risk,,"Ukraine / Russia / Moral Responsibility, Other Neutrality Debate, Triple Lock / UN Mandate, Defence Capability / Underinvestment"
+Sunday Independent (Ireland),6,0,2,2,1,1,0,0.0,83.33,50.0,16.67,0.0,16.67,16.67,16.67,50.0,0.896,low_one_sided_amplification_risk,"Government, NATO","Other Neutrality Debate, Ukraine / Russia / Moral Responsibility, Triple Lock / UN Mandate, Defence Capability / Underinvestment"
+Limerick's Live 95FM,6,0,5,0,0,1,0,0.0,83.33,0.0,16.67,0.0,66.67,0.0,0.0,33.33,0.918,medium_one_sided_amplification_risk,"Mary Lou McDonald, Sinn Féin",Other Neutrality Debate
+Cork Beo,6,0,0,2,2,0,2,0.0,66.67,66.67,0.0,33.33,66.67,0.0,0.0,33.33,0.918,medium_one_sided_amplification_risk,,"Shannon / US Military / Anti-war, Defence Capability / Underinvestment, Ukraine / Russia / Moral Responsibility"
+Morning Ireland,6,0,3,0,0,2,1,0.0,50.0,0.0,33.33,16.67,33.33,0.0,0.0,66.67,0.918,medium_one_sided_amplification_risk,"Lelia Doolan, Government, Mary Lou McDonald","Other Neutrality Debate, Shannon / US Military / Anti-war"
+The Opinion Line,6,1,3,0,0,1,1,16.67,50.0,0.0,16.67,16.67,16.67,0.0,0.0,83.33,0.65,high_one_sided_amplification_risk,"Mary Lou McDonald, Micheál Martin, reported_actor_unclear",Other Neutrality Debate
+Newstalk,6,1,1,0,1,2,1,16.67,33.33,16.67,33.33,16.67,16.67,0.0,0.0,83.33,0.65,high_one_sided_amplification_risk,NATO,Other Neutrality Debate
+Ireland Afloat,6,0,0,0,0,5,1,0.0,0.0,0.0,83.33,16.67,0.0,83.33,16.67,0.0,0.65,high_one_sided_amplification_risk,,Defence Capability / Underinvestment
+Carlow Live,5,0,0,1,4,0,0,0.0,100.0,100.0,0.0,0.0,60.0,0.0,40.0,0.0,0.971,low_one_sided_amplification_risk,,"Other Neutrality Debate, Defence Capability / Underinvestment, Shannon / US Military / Anti-war"
+Dundalk Democrat,5,0,0,2,3,0,0,0.0,100.0,100.0,0.0,0.0,60.0,0.0,40.0,0.0,0.971,low_one_sided_amplification_risk,,"Other Neutrality Debate, Defence Capability / Underinvestment, Shannon / US Military / Anti-war"
+Laois Nationalist,5,0,0,2,3,0,0,0.0,100.0,100.0,0.0,0.0,60.0,0.0,20.0,20.0,0.865,low_one_sided_amplification_risk,,"Ukraine / Russia / Moral Responsibility, Other Neutrality Debate, Triple Lock / UN Mandate, Defence Capability / Underinvestment"
+Leinster Leader,5,0,0,1,4,0,0,0.0,100.0,100.0,0.0,0.0,60.0,0.0,40.0,0.0,0.971,low_one_sided_amplification_risk,,"Other Neutrality Debate, Defence Capability / Underinvestment, Shannon / US Military / Anti-war"
+Longford Leader,5,0,0,1,4,0,0,0.0,100.0,100.0,0.0,0.0,60.0,0.0,40.0,0.0,0.971,low_one_sided_amplification_risk,,"Other Neutrality Debate, Defence Capability / Underinvestment, Shannon / US Military / Anti-war"
+Tipperary Live,5,0,0,1,4,0,0,0.0,100.0,100.0,0.0,0.0,60.0,0.0,40.0,0.0,0.971,low_one_sided_amplification_risk,,"Other Neutrality Debate, Defence Capability / Underinvestment, Shannon / US Military / Anti-war"
+The Ditch,5,0,1,2,2,0,0,0.0,100.0,80.0,0.0,0.0,20.0,0.0,20.0,60.0,0.865,low_one_sided_amplification_risk,Micheál Martin,"NATO / EU Security Alignment, Shannon / US Military / Anti-war, Ukraine / Russia / Moral Responsibility, Budget / Fiscal / Public Finances, Defence Capability / Underinvestment"
+Killarney Advertiser,5,0,0,0,4,0,1,0.0,80.0,80.0,0.0,20.0,0.0,0.0,0.0,100.0,0.0,high_one_sided_amplification_risk,,Ukraine / Russia / Moral Responsibility
+Dublin People,5,0,1,1,2,1,0,0.0,80.0,60.0,20.0,0.0,20.0,0.0,0.0,80.0,0.722,high_one_sided_amplification_risk,Ukraine,"Other Neutrality Debate, Budget / Fiscal / Public Finances, Ukraine / Russia / Moral Responsibility, Defence Capability / Underinvestment"
+The Clare Champion,5,0,1,1,2,0,1,0.0,80.0,60.0,0.0,20.0,100.0,0.0,0.0,0.0,0.0,high_one_sided_amplification_risk,Micheál Martin,"Shannon / US Military / Anti-war, Triple Lock / UN Mandate"
+Shannonside FM,5,0,2,2,0,1,0,0.0,80.0,40.0,20.0,0.0,60.0,0.0,0.0,40.0,0.971,low_one_sided_amplification_risk,"Helen McEntee, Government","Other Neutrality Debate, Public Consent / Referendum, Triple Lock / UN Mandate"
+The Last Word,5,0,2,1,0,2,0,0.0,60.0,20.0,40.0,0.0,40.0,0.0,0.0,60.0,0.971,low_one_sided_amplification_risk,"Micheál Martin, reported_actor_unclear",Other Neutrality Debate
+WLR FM,5,0,2,1,0,2,0,0.0,60.0,20.0,40.0,0.0,40.0,0.0,0.0,60.0,0.971,low_one_sided_amplification_risk,Defence Forces,"Other Neutrality Debate, Triple Lock / UN Mandate, Ukraine / Russia / Moral Responsibility"
+The 9-11 Show,5,2,3,0,0,0,0,40.0,60.0,0.0,0.0,0.0,0.0,20.0,0.0,80.0,0.722,high_one_sided_amplification_risk,"reported_actor_unclear, Russia, Helen McEntee",Other Neutrality Debate
+Limerick Today,5,1,0,1,1,2,0,20.0,40.0,40.0,40.0,0.0,20.0,0.0,0.0,80.0,0.722,high_one_sided_amplification_risk,,"Other Neutrality Debate, Triple Lock / UN Mandate"
+NewsTalk Breakfast,5,3,1,0,0,0,1,60.0,20.0,0.0,0.0,20.0,20.0,0.0,20.0,60.0,0.865,low_one_sided_amplification_risk,Micheál Martin,Other Neutrality Debate
+Carlow Nationalist,4,0,0,2,2,0,0,0.0,100.0,100.0,0.0,0.0,50.0,0.0,25.0,25.0,0.946,low_one_sided_amplification_risk,,"Other Neutrality Debate, Ukraine / Russia / Moral Responsibility, Triple Lock / UN Mandate, Defence Capability / Underinvestment"
+Carlow Times,4,0,0,2,2,0,0,0.0,100.0,100.0,0.0,0.0,75.0,0.0,25.0,0.0,0.811,medium_one_sided_amplification_risk,,"Other Neutrality Debate, Shannon / US Military / Anti-war, Defence Capability / Underinvestment"
+Clare Live,4,0,0,1,3,0,0,0.0,100.0,100.0,0.0,0.0,75.0,0.0,25.0,0.0,0.811,medium_one_sided_amplification_risk,,"Other Neutrality Debate, Shannon / US Military / Anti-war, Defence Capability / Underinvestment"
+Cork Live,4,0,0,1,3,0,0,0.0,100.0,100.0,0.0,0.0,75.0,0.0,25.0,0.0,0.811,medium_one_sided_amplification_risk,,"Other Neutrality Debate, Shannon / US Military / Anti-war, Defence Capability / Underinvestment"
+GalwayBeo,4,0,0,2,2,0,0,0.0,100.0,100.0,0.0,0.0,50.0,0.0,0.0,50.0,1.0,low_one_sided_amplification_risk,,"Shannon / US Military / Anti-war, Other Neutrality Debate, Ukraine / Russia / Moral Responsibility"
+Kildare Nationalist,4,0,0,2,2,0,0,0.0,100.0,100.0,0.0,0.0,50.0,0.0,25.0,25.0,0.946,low_one_sided_amplification_risk,,"Other Neutrality Debate, Ukraine / Russia / Moral Responsibility, Triple Lock / UN Mandate, Defence Capability / Underinvestment"
+Kildare Now,4,0,0,1,3,0,0,0.0,100.0,100.0,0.0,0.0,75.0,0.0,25.0,0.0,0.811,medium_one_sided_amplification_risk,,"Other Neutrality Debate, Shannon / US Military / Anti-war, Defence Capability / Underinvestment"
+Offaly Express,4,0,0,1,3,0,0,0.0,100.0,100.0,0.0,0.0,75.0,0.0,25.0,0.0,0.811,medium_one_sided_amplification_risk,,"Other Neutrality Debate, Defence Capability / Underinvestment, Shannon / US Military / Anti-war"
+The Limerick Leader,4,0,0,1,3,0,0,0.0,100.0,100.0,0.0,0.0,75.0,0.0,25.0,0.0,0.811,medium_one_sided_amplification_risk,,"Other Neutrality Debate, Shannon / US Military / Anti-war, Defence Capability / Underinvestment"
+The Donegal News,4,0,1,1,2,0,0,0.0,100.0,75.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,high_one_sided_amplification_risk,Fianna Fáil,"Other Neutrality Debate, Peacekeeping / Identity / Tradition"
+Clare FM,4,0,3,0,1,0,0,0.0,100.0,25.0,0.0,0.0,75.0,0.0,0.0,25.0,0.811,medium_one_sided_amplification_risk,"Micheál Martin, Government","Other Neutrality Debate, Shannon / US Military / Anti-war"
+Dublin Live,4,0,0,1,2,0,1,0.0,75.0,75.0,0.0,25.0,75.0,0.0,0.0,25.0,0.811,medium_one_sided_amplification_risk,,"Other Neutrality Debate, Ukraine / Russia / Moral Responsibility, Triple Lock / UN Mandate"
+Evening Herald,4,1,0,0,3,0,0,25.0,75.0,75.0,0.0,0.0,75.0,0.0,0.0,25.0,0.811,medium_one_sided_amplification_risk,,Ukraine / Russia / Moral Responsibility
+Sunshine 106.8 FM,4,0,2,0,1,1,0,0.0,75.0,25.0,25.0,0.0,75.0,0.0,0.0,25.0,0.811,medium_one_sided_amplification_risk,"Government, Sinn Féin",Other Neutrality Debate
+The Neil Prendeville Show,4,0,2,0,0,2,0,0.0,50.0,0.0,50.0,0.0,0.0,0.0,0.0,100.0,0.0,high_one_sided_amplification_risk,"reported_actor_unclear, Defence Forces",Other Neutrality Debate
+Breakingnews.ie,3,0,0,1,2,0,0,0.0,100.0,100.0,0.0,0.0,66.67,0.0,33.33,0.0,0.918,medium_one_sided_amplification_risk,,"Other Neutrality Debate, Defence Capability / Underinvestment"
+Donegal Live,3,0,0,1,2,0,0,0.0,100.0,100.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,high_one_sided_amplification_risk,,"Other Neutrality Debate, Shannon / US Military / Anti-war"
+Irish Star,3,0,0,2,1,0,0,0.0,100.0,100.0,0.0,0.0,66.67,0.0,0.0,33.33,0.918,medium_one_sided_amplification_risk,,"Shannon / US Military / Anti-war, Ukraine / Russia / Moral Responsibility"
+The Mail on Sunday (Ireland),3,0,0,0,3,0,0,0.0,100.0,100.0,0.0,0.0,66.67,0.0,0.0,33.33,0.918,medium_one_sided_amplification_risk,,Ukraine / Russia / Moral Responsibility
+The Nationalist (Tipperary),3,0,0,1,2,0,0,0.0,100.0,100.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,high_one_sided_amplification_risk,,"Other Neutrality Debate, Shannon / US Military / Anti-war"
+Trinity News,3,0,0,1,2,0,0,0.0,100.0,100.0,0.0,0.0,33.33,0.0,33.33,33.33,1.0,low_one_sided_amplification_risk,,"Budget / Fiscal / Public Finances, Peacekeeping / Identity / Tradition, Ukraine / Russia / Moral Responsibility"
+Laois Today,3,0,1,0,2,0,0,0.0,100.0,66.67,0.0,0.0,0.0,0.0,33.33,66.67,0.918,medium_one_sided_amplification_risk,,"Peacekeeping / Identity / Tradition, Other Neutrality Debate"
+The Limerick Post,3,0,1,2,0,0,0,0.0,100.0,66.67,0.0,0.0,100.0,0.0,0.0,0.0,0.0,high_one_sided_amplification_risk,Government,"Other Neutrality Debate, Shannon / US Military / Anti-war, Triple Lock / UN Mandate"
+Tullamore Tribune,3,0,1,0,2,0,0,0.0,100.0,66.67,0.0,0.0,66.67,0.0,33.33,0.0,0.918,medium_one_sided_amplification_risk,Government,"Shannon / US Military / Anti-war, Defence Capability / Underinvestment"
+Cork's 96 FM,3,0,3,0,0,0,0,0.0,100.0,0.0,0.0,0.0,66.67,0.0,0.0,33.33,0.918,medium_one_sided_amplification_risk,"Micheál Martin, Mary Lou McDonald",Other Neutrality Debate
+Ocean FM,3,0,3,0,0,0,0,0.0,100.0,0.0,0.0,0.0,33.33,0.0,0.0,66.67,0.918,medium_one_sided_amplification_risk,"Micheál Martin, Sinn Féin, Government","Other Neutrality Debate, Triple Lock / UN Mandate"
+RTE News,3,0,1,0,1,1,0,0.0,66.67,33.33,33.33,0.0,33.33,0.0,0.0,66.67,0.918,medium_one_sided_amplification_risk,,"Ukraine / Russia / Moral Responsibility, Peacekeeping / Identity / Tradition"
+Deise Today,3,0,0,1,0,1,1,0.0,33.33,33.33,33.33,33.33,33.33,0.0,0.0,66.67,0.918,medium_one_sided_amplification_risk,,Other Neutrality Debate
+Cork's RedFM,3,0,1,0,0,1,1,0.0,33.33,0.0,33.33,33.33,33.33,0.0,0.0,66.67,0.918,medium_one_sided_amplification_risk,Micheál Martin,Other Neutrality Debate
+Northern Sound,3,0,1,0,0,2,0,0.0,33.33,0.0,66.67,0.0,0.0,0.0,0.0,100.0,0.0,high_one_sided_amplification_risk,Government,Other Neutrality Debate
+Daily Mirror (Ireland),2,0,0,1,1,0,0,0.0,100.0,100.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,low_sample,,"Shannon / US Military / Anti-war, Other Neutrality Debate"
+Derry Post,2,0,0,0,2,0,0,0.0,100.0,100.0,0.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Other Neutrality Debate
+Galway Advertiser,2,0,0,0,2,0,0,0.0,100.0,100.0,0.0,0.0,0.0,0.0,50.0,50.0,1.0,low_sample,,"Ukraine / Russia / Moral Responsibility, Other Neutrality Debate"
+The Munster Express,2,0,0,1,1,0,0,0.0,100.0,100.0,0.0,0.0,50.0,0.0,0.0,50.0,1.0,low_sample,,"Ukraine / Russia / Moral Responsibility, Triple Lock / UN Mandate"
+Image Magazine,2,0,1,0,1,0,0,0.0,100.0,50.0,0.0,0.0,50.0,0.0,0.0,50.0,1.0,low_sample,,"Ukraine / Russia / Moral Responsibility, Other Neutrality Debate"
+Ireland Live,2,0,1,0,1,0,0,0.0,100.0,50.0,0.0,0.0,0.0,0.0,50.0,50.0,1.0,low_sample,Government,"Defence Capability / Underinvestment, Other Neutrality Debate"
+FM104,2,0,2,0,0,0,0,0.0,100.0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,low_sample,Mary Lou McDonald,Other Neutrality Debate
+Highland Radio,2,0,2,0,0,0,0,0.0,100.0,0.0,0.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,"Fianna Fáil, Helen McEntee",Other Neutrality Debate
+Q102,2,0,2,0,0,0,0,0.0,100.0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,low_sample,"Micheál Martin, Mary Lou McDonald",Other Neutrality Debate
+TheJournal.ie,2,0,2,0,0,0,0,0.0,100.0,0.0,0.0,0.0,50.0,0.0,0.0,50.0,1.0,low_sample,"Lelia Doolan, Sinn Féin","Shannon / US Military / Anti-war, Other Neutrality Debate"
+Dublin InQuirer,2,0,0,0,1,1,0,0.0,50.0,50.0,50.0,0.0,50.0,0.0,0.0,50.0,1.0,low_sample,,"Triple Lock / UN Mandate, Other Neutrality Debate"
+The Irish Farmers Journal,2,0,0,0,1,0,1,0.0,50.0,50.0,0.0,50.0,0.0,0.0,50.0,50.0,1.0,low_sample,,Budget / Fiscal / Public Finances
+eolas Magazine,2,0,0,0,1,0,1,0.0,50.0,50.0,0.0,50.0,50.0,0.0,0.0,50.0,1.0,low_sample,,Other Neutrality Debate
+Town Talk,2,0,1,0,0,0,1,0.0,50.0,0.0,0.0,50.0,50.0,0.0,0.0,50.0,1.0,low_sample,Mary Lou McDonald,"Other Neutrality Debate, Peacekeeping / Identity / Tradition"
+University Observer,2,1,1,0,0,0,0,50.0,50.0,0.0,0.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Other Neutrality Debate
+The Currency,2,0,0,0,0,1,1,0.0,0.0,0.0,50.0,50.0,0.0,0.0,0.0,100.0,0.0,low_sample,,"Other Neutrality Debate, Budget / Fiscal / Public Finances"
+College Tribune,1,0,0,0,1,0,0,0.0,100.0,100.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,low_sample,,Public Consent / Referendum
+Donegal Daily,1,0,0,0,1,0,0,0.0,100.0,100.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,low_sample,,Public Consent / Referendum
+Nenagh Guardian,1,0,0,1,0,0,0,0.0,100.0,100.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,low_sample,,Shannon / US Military / Anti-war
+New Ross Standard,1,0,0,1,0,0,0,0.0,100.0,100.0,0.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Ukraine / Russia / Moral Responsibility
+The Anglo Celt,1,0,0,0,1,0,0,0.0,100.0,100.0,0.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Other Neutrality Debate
+The Mayo News,1,0,0,0,1,0,0,0.0,100.0,100.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,low_sample,,Triple Lock / UN Mandate
+The Medical Independent,1,0,0,0,1,0,0,0.0,100.0,100.0,0.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Ukraine / Russia / Moral Responsibility
+The Sun (Ireland),1,0,0,0,1,0,0,0.0,100.0,100.0,0.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Other Neutrality Debate
+Tuam Herald,1,0,0,0,1,0,0,0.0,100.0,100.0,0.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Other Neutrality Debate
+9 Till Noon Show,1,0,1,0,0,0,0,0.0,100.0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,low_sample,Helen McEntee,Peacekeeping / Identity / Tradition
+AgendaNi,1,0,1,0,0,0,0,0.0,100.0,0.0,0.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Other Neutrality Debate
+Connacht (Connaught) Tribune,1,0,1,0,0,0,0,0.0,100.0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,low_sample,Government,Other Neutrality Debate
+Drogheda Life,1,0,1,0,0,0,0,0.0,100.0,0.0,0.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,Government,Other Neutrality Debate
+Dundalk FM,1,0,1,0,0,0,0,0.0,100.0,0.0,0.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,reported_actor_unclear,Ukraine / Russia / Moral Responsibility
+Extra.ie,1,0,1,0,0,0,0,0.0,100.0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,low_sample,Simon Harris,Shannon / US Military / Anti-war
+Farmview,1,0,1,0,0,0,0,0.0,100.0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,low_sample,Fianna Fáil,Other Neutrality Debate
+Laois People,1,0,1,0,0,0,0,0.0,100.0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,low_sample,Lelia Doolan,Shannon / US Military / Anti-war
+Midwest Radio,1,0,1,0,0,0,0,0.0,100.0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,low_sample,UN Security Council,Other Neutrality Debate
+Radio Kerry,1,0,1,0,0,0,0,0.0,100.0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,low_sample,Micheál Martin,Other Neutrality Debate
+South East Radio,1,0,1,0,0,0,0,0.0,100.0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,low_sample,Cabinet,Other Neutrality Debate
+BBC World Service,1,0,0,0,0,1,0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Other Neutrality Debate
+BallinEurope,1,0,0,0,0,1,0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Other Neutrality Debate
+Banbridge Leader,1,0,0,0,0,1,0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Other Neutrality Debate
+Business & Finance,1,0,0,0,0,0,1,0.0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Other Neutrality Debate
+Dundalk Leader,1,0,0,0,0,1,0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Ukraine / Russia / Moral Responsibility
+Herfamily.ie,1,0,0,0,0,0,1,0.0,0.0,0.0,0.0,100.0,100.0,0.0,0.0,0.0,0.0,low_sample,,Peacekeeping / Identity / Tradition
+Irish Farmers Monthly (IFM),1,0,0,0,0,0,1,0.0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Other Neutrality Debate
+Irish Marketing Journal,1,1,0,0,0,0,0,100.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Other Neutrality Debate
+Morning Focus,1,1,0,0,0,0,0,100.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Peacekeeping / Identity / Tradition
+Roscommon People,1,0,0,0,0,1,0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Other Neutrality Debate
+The Current Affairs Show,1,0,0,0,0,1,0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Other Neutrality Debate
+The Niall Boylan Show,1,1,0,0,0,0,0,100.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,100.0,0.0,low_sample,,Ukraine / Russia / Moral Responsibility

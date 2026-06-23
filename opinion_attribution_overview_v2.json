@@ -1,0 +1,20 @@
+{
+  "total_articles": 741,
+  "publication_owned_opinion_count": 49,
+  "single_actor_reported_opinion_count": 202,
+  "multi_actor_reported_opinion_count": 95,
+  "multi_actor_contested_reported_opinion_count": 238,
+  "factual_low_opinion_reporting_count": 84,
+  "unclear_attribution_count": 73,
+  "publication_owned_opinion_pct": 6.61,
+  "single_actor_reported_opinion_pct": 27.26,
+  "multi_actor_reported_opinion_pct": 12.82,
+  "multi_actor_contested_reported_opinion_pct": 32.12,
+  "factual_low_opinion_reporting_pct": 11.34,
+  "unclear_attribution_pct": 9.85,
+  "actor_mediated_count": 535,
+  "actor_mediated_pct": 72.2,
+  "contested_or_multi_actor_count": 333,
+  "contested_or_multi_actor_pct": 44.94,
+  "note": "V2 separates publication-owned opinion from actor-mediated coverage. The old mixed_reported_opinion bucket has been tightened into multi-actor, contested reported, single-actor reported, or unclear categories."
+}
