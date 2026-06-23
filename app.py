@@ -54,6 +54,11 @@ daily_overall_ts = load_csv("daily_overall_timeseries_final.csv")
 agenda_ts = load_csv("agenda_timeseries_final.csv")
 readiness = load_csv("intervention_readiness_final.csv")
 
+opinion_articles = load_csv("opinion_attribution_articles_v2.csv")
+contributor_attribution = load_csv("contributor_attribution_summary_v2.csv")
+opinion_outlet_balance = load_csv("outlet_attribution_balance_v2.csv")
+opinion_overview = load_json("opinion_attribution_overview_v2.json")
+
 st.markdown("""
 <style>
 .block-container { padding-top: 1.1rem; padding-bottom: 2rem; }
@@ -193,6 +198,7 @@ pages = [
     "Executive Overview",
     "Narrative Map",
     "Narrative Timeline",
+    "Contributor Attribution",
     "Agenda Shapers",
     "Debate Positioning",
     "Outlet Influence",
@@ -478,6 +484,217 @@ elif page == "Narrative Timeline":
                 display_table(plot.sort_values(["week_start", metric_choice], ascending=[False, False]), ["publication_week", "entity", "mentions", "unique_stories", "weighted_mentions", "estimated_reach", "avg_stance"], 120)
             st.markdown("</div>", unsafe_allow_html=True)
 
+elif page == "Contributor Attribution":
+    st.header("Contributor Attribution")
+    st.write("Separates publication-owned opinion from reported actor opinion, and shows how real or synthetic contributors carry the debate.")
+
+    if opinion_articles.empty and contributor_attribution.empty and opinion_outlet_balance.empty:
+        st.warning("No contributor attribution files found. Upload the V2 opinion attribution CSV/JSON files into the repo root or data/ folder.")
+    else:
+        total_attr = int(opinion_overview.get("total_articles", len(opinion_articles))) if opinion_overview else len(opinion_articles)
+
+        if opinion_overview:
+            publication_owned_pct = float(opinion_overview.get("publication_owned_opinion_pct", 0))
+            actor_mediated_pct = float(opinion_overview.get("actor_mediated_pct", 0))
+            contested_pct = float(opinion_overview.get("contested_or_multi_actor_pct", 0))
+            unclear_pct = float(opinion_overview.get("unclear_attribution_pct", 0))
+        else:
+            publication_owned_pct = 0
+            actor_mediated_pct = 0
+            contested_pct = 0
+            unclear_pct = 0
+            if not opinion_articles.empty and "opinion_attribution_v2" in opinion_articles.columns:
+                total_attr = len(opinion_articles)
+                publication_owned_pct = opinion_articles["opinion_attribution_v2"].eq("publication_owned_opinion").mean() * 100
+                actor_mediated_pct = opinion_articles["opinion_attribution_v2"].isin([
+                    "single_actor_reported_opinion",
+                    "multi_actor_reported_opinion",
+                    "multi_actor_contested_reported_opinion",
+                ]).mean() * 100
+                contested_pct = opinion_articles["opinion_attribution_v2"].isin([
+                    "multi_actor_reported_opinion",
+                    "multi_actor_contested_reported_opinion",
+                ]).mean() * 100
+                unclear_pct = opinion_articles["opinion_attribution_v2"].eq("unclear_attribution").mean() * 100
+
+        c1, c2, c3, c4, c5 = st.columns(5)
+        with c1:
+            metric_card("Articles attributed", fmt_num(total_attr), "with opinion ownership classification")
+        with c2:
+            metric_card("Publication-owned", f"{publication_owned_pct:.1f}%", "article/contributor appears to own the stance")
+        with c3:
+            metric_card("Actor-mediated", f"{actor_mediated_pct:.1f}%", "stance belongs to reported actors")
+        with c4:
+            metric_card("Multi-actor", f"{contested_pct:.1f}%", "coverage carries more than one side or actor")
+        with c5:
+            metric_card("Unclear", f"{unclear_pct:.1f}%", "not enough attribution evidence")
+
+        st.markdown(
+            "<div class='ok-box'><b>Attribution layer active:</b> this separates the contributor/byline from the true owner of the opinion. Synthetic contributor names are demo placeholders where byline metadata is missing.</div>",
+            unsafe_allow_html=True,
+        )
+
+        tab1, tab2, tab3, tab4 = st.tabs(["Attribution split", "Contributor profiles", "Outlet balance", "Article evidence"])
+
+        with tab1:
+            left, right = st.columns([1.1, 1])
+            with left:
+                st.markdown("<div class='card'>", unsafe_allow_html=True)
+                st.subheader("Opinion ownership split")
+                if not opinion_articles.empty and "opinion_attribution_label" in opinion_articles.columns:
+                    attr_counts = opinion_articles["opinion_attribution_label"].fillna("Unclear attribution").value_counts().reset_index()
+                    attr_counts.columns = ["Attribution", "Articles"]
+                    fig = px.bar(
+                        attr_counts,
+                        x="Articles",
+                        y="Attribution",
+                        orientation="h",
+                        template="plotly_white",
+                        labels={"Articles": "Articles", "Attribution": ""},
+                    )
+                    fig.update_layout(height=430, yaxis=dict(autorange="reversed"), margin=dict(l=10, r=10, t=25, b=10))
+                    st.plotly_chart(fig, use_container_width=True)
+                    display_table(attr_counts, ["Attribution", "Articles"])
+                else:
+                    st.info("Article-level attribution labels not available.")
+                st.markdown("</div>", unsafe_allow_html=True)
+
+            with right:
+                st.markdown("<div class='card'>", unsafe_allow_html=True)
+                st.subheader("How to read this")
+                st.write(
+                    "Publication-owned means the article appears to carry the stance itself. "
+                    "Actor-mediated means the article is reporting, quoting, contrasting or amplifying an external actor's stance. "
+                    "Multi-actor means the article carries more than one reported actor, side or claim."
+                )
+                st.write(
+                    "This prevents the app from wrongly treating a reported quote as the outlet's own opinion."
+                )
+                st.markdown("</div>", unsafe_allow_html=True)
+
+        with tab2:
+            st.markdown("<div class='card'>", unsafe_allow_html=True)
+            st.subheader("Contributor profiles")
+
+            view = contributor_attribution.copy()
+            if not view.empty:
+                contributor_type_filter = "All"
+                if "contributor_type" in view.columns:
+                    type_options = ["All"] + sorted(view["contributor_type"].dropna().astype(str).unique().tolist())
+                    contributor_type_filter = st.selectbox("Contributor type", type_options)
+                    if contributor_type_filter != "All":
+                        view = view[view["contributor_type"].astype(str) == contributor_type_filter]
+
+                min_articles = st.slider("Minimum articles", 1, 30, 2)
+                if "articles" in view.columns:
+                    view = view[pd.to_numeric(view["articles"], errors="coerce").fillna(0) >= min_articles]
+
+                plot = view.copy()
+                for c in ["actor_mediated_pct", "contested_or_multi_actor_pct", "publication_owned_pct", "articles"]:
+                    if c in plot.columns:
+                        plot[c] = pd.to_numeric(plot[c], errors="coerce").fillna(0)
+
+                if not plot.empty and {"actor_mediated_pct", "contested_or_multi_actor_pct", "articles"}.issubset(plot.columns):
+                    fig = px.scatter(
+                        plot.head(120),
+                        x="actor_mediated_pct",
+                        y="contested_or_multi_actor_pct",
+                        size="articles",
+                        color="contributor_type" if "contributor_type" in plot.columns else None,
+                        hover_name="contributor_display_name",
+                        hover_data=[c for c in ["Outlet", "articles", "publication_owned_pct", "dominant_attribution", "one_sided_amplification_risk", "top_reported_actors"] if c in plot.columns],
+                        template="plotly_white",
+                        labels={
+                            "actor_mediated_pct": "Actor-mediated coverage %",
+                            "contested_or_multi_actor_pct": "Multi-actor / contested coverage %",
+                            "articles": "Articles",
+                        },
+                        size_max=45,
+                    )
+                    fig.update_layout(height=560, margin=dict(l=10, r=10, t=25, b=10))
+                    st.plotly_chart(fig, use_container_width=True)
+
+                display_table(
+                    view,
+                    [
+                        "contributor_display_name", "Outlet", "contributor_type", "synthetic_author_flag", "articles",
+                        "publication_owned_pct", "actor_mediated_pct", "contested_or_multi_actor_pct",
+                        "dominant_attribution", "dominant_stance_side", "viewpoint_spread_score",
+                        "one_sided_amplification_risk", "top_reported_actors", "top_frames", "top_clusters",
+                    ],
+                    100,
+                )
+            else:
+                st.info("No contributor summary found.")
+            st.markdown("</div>", unsafe_allow_html=True)
+
+        with tab3:
+            st.markdown("<div class='card'>", unsafe_allow_html=True)
+            st.subheader("Outlet attribution balance")
+            view = opinion_outlet_balance.copy()
+            if not view.empty:
+                for c in ["actor_mediated_pct", "publication_owned_pct", "contested_or_multi_actor_pct", "total_articles"]:
+                    if c in view.columns:
+                        view[c] = pd.to_numeric(view[c], errors="coerce").fillna(0)
+                sort_col = "actor_mediated_pct" if "actor_mediated_pct" in view.columns else "total_articles"
+                view = view.sort_values(sort_col, ascending=False)
+
+                fig = px.bar(
+                    view.head(30),
+                    x=sort_col,
+                    y="Outlet",
+                    orientation="h",
+                    hover_data=[c for c in ["total_articles", "publication_owned_pct", "contested_or_multi_actor_pct", "one_sided_amplification_risk", "top_reported_actors"] if c in view.columns],
+                    template="plotly_white",
+                    labels={sort_col: sort_col.replace("_", " ").title(), "Outlet": ""},
+                )
+                fig.update_layout(height=720, yaxis=dict(autorange="reversed"), margin=dict(l=10, r=10, t=25, b=10))
+                st.plotly_chart(fig, use_container_width=True)
+
+                display_table(
+                    view,
+                    [
+                        "Outlet", "total_articles", "publication_owned_pct", "actor_mediated_pct",
+                        "contested_or_multi_actor_pct", "factual_low_opinion_pct", "unclear_pct",
+                        "preserve_side_pct", "reform_side_pct", "move_away_side_pct", "mixed_unclear_side_pct",
+                        "viewpoint_spread_score", "one_sided_amplification_risk", "top_reported_actors", "top_frames",
+                    ],
+                    100,
+                )
+            else:
+                st.info("No outlet attribution balance found.")
+            st.markdown("</div>", unsafe_allow_html=True)
+
+        with tab4:
+            st.markdown("<div class='card'>", unsafe_allow_html=True)
+            st.subheader("Article-level attribution evidence")
+            view = opinion_articles.copy()
+            if not view.empty:
+                if "opinion_attribution_label" in view.columns:
+                    attr_options = ["All"] + sorted(view["opinion_attribution_label"].dropna().astype(str).unique().tolist())
+                    attr_filter = st.selectbox("Attribution category", attr_options)
+                    if attr_filter != "All":
+                        view = view[view["opinion_attribution_label"].astype(str) == attr_filter]
+
+                if "contributor_display_name" in view.columns:
+                    contributor_options = ["All"] + sorted(view["contributor_display_name"].dropna().astype(str).unique().tolist())
+                    contributor_filter = st.selectbox("Contributor", contributor_options)
+                    if contributor_filter != "All":
+                        view = view[view["contributor_display_name"].astype(str) == contributor_filter]
+
+                display_table(
+                    view,
+                    [
+                        "publication_datetime", "Headline", "Outlet", "Reporter", "contributor_display_name", "contributor_type",
+                        "opinion_attribution_label", "opinion_owner", "opinion_owner_type", "stance_owner_side",
+                        "attribution_confidence", "attribution_evidence", "dominant_frame", "cluster_display_name", "Link",
+                    ],
+                    150,
+                )
+            else:
+                st.info("No article-level attribution file found.")
+            st.markdown("</div>", unsafe_allow_html=True)
+
 elif page == "Agenda Shapers":
     st.header("Agenda Shapers")
     st.write("Who is shaping the debate, what role are they playing, and where are they positioned?")
@@ -689,6 +906,7 @@ elif page == "Methodology":
         5. **Agenda shaper ranking** identifies actors, organisations and outlets shaping the debate.
         6. **Timeline modelling** tracks narrative volume, stance drift, frame movement and agenda activity through time.
         7. **Evidence drilldown** preserves excerpts and links so each score can be inspected.
+        8. **Contributor attribution** separates publication-owned opinion from reported actor opinion, including synthetic demo contributors where byline metadata is missing.
         """
     )
     st.markdown("</div>", unsafe_allow_html=True)
